@@ -8,15 +8,15 @@
 
 void print_list(const listint_t *list)
 {
-	int i;
+	int x;
 
-	i = 0;
+	x = 0;
 	while (list)
 	{
-		if (i > 0)
+		if (x > 0)
 			printf(", ");
 		printf("%d", list->n);
-		++i;
+		++x;
 		list = list->next;
 	}
 	printf("\n");

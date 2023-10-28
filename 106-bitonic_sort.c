@@ -1,6 +1,10 @@
-#include "sort.h"
+#include <stdio.h>
+#include <stddef.h>
+#include <stdlib.h>
 
-void bitonic_merge(int *array, size_t size, size_t start, size_t seq, char flow);
+
+void bitonic_merge(int *array, size_t size, size_t start, size_t seq,
+char flow);
 void bitonic_seq(int *array, size_t size, size_t start, size_t seq, char flow);
 void bitonic_sort(int *array, size_t size);
 
@@ -32,15 +36,15 @@ void swap_ints(int *a, int *b)
 void bitonic_merge(int *array, size_t size, size_t start, size_t seq,
 		char flow)
 {
-	size_t x, jump = seq / 2;
+	size_t i, jump = seq / 2;
 
 	if (seq > 1)
 	{
-		for (x = start; x < start + jump; x++)
+		for (i = start; i < start + jump; i++)
 		{
-			if ((flow == UP && array[x] > array[x + jump]) ||
-			    (flow == DOWN && array[x] < array[x + jump]))
-				swap_ints(array + x, array + x + jump);
+			if ((flow == UP && array[i] > array[i + jump]) ||
+			    (flow == DOWN && array[i] < array[i + jump]))
+				swap_ints(array + i, array + i + jump);
 		}
 		bitonic_merge(array, size, start, jump, flow);
 		bitonic_merge(array, size, start + jump, jump, flow);
@@ -90,3 +94,4 @@ void bitonic_sort(int *array, size_t size)
 
 	bitonic_seq(array, size, 0, size, UP);
 }
+

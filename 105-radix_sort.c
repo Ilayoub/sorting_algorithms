@@ -1,4 +1,5 @@
 #include "sort.h"
+#include <stdlib.h>
 
 void radix_counting_sort(int *array, size_t size, int sig, int *buff);
 void radix_sort(int *array, size_t size);
